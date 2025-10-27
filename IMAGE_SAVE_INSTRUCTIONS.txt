@@ -1,0 +1,43 @@
+╔══════════════════════════════════════════════════════════════════════════╗
+║                    HOW TO ADD YOUR IMAGE TO THE WEBSITE                  ║
+╚══════════════════════════════════════════════════════════════════════════╝
+
+Your beautiful rice planting image is perfect for the hero section!
+
+STEP 1: Save the Image
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. Right-click on the image in your conversation
+2. Select "Save Image As..." or "Download"
+3. Save it anywhere on your computer first
+
+STEP 2: Rename the Image
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. Find the saved image file
+2. Right-click on it
+3. Select "Rename"
+4. Change the name to: hero.jpg
+   (make sure it ends with .jpg)
+
+STEP 3: Move to Images Folder
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. Open File Explorer (Windows key + E)
+2. Go to: C:\Users\Set Yusuf\Desktop\web_explain\images\
+3. Copy and paste (or drag) your renamed "hero.jpg" file into this folder
+
+STEP 4: Open Your Website!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. Double-click index.html
+2. Your beautiful rice planting image will now appear behind the title!
+
+═══════════════════════════════════════════════════════════════════════════
+
+QUICK TIPS:
+• The image should be at least 1920x1080 pixels for best quality
+• Make sure the file is named exactly: hero.jpg
+• It should be in: web_explain\images\hero.jpg
+
+═══════════════════════════════════════════════════════════════════════════
+
+The image you showed me (the woman with rice seedlings in the paddy field) 
+will look AMAZING behind the "ស្រូវ - Srov" title!
+
