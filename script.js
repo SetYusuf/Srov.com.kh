@@ -77,15 +77,41 @@ window.addEventListener('scroll', () => {
 // Contact Form Submission - Sends email to setyusuf236@gmail.com
 const contactForm = document.getElementById('contactForm');
 
+// Debug function to check if EmailJS is loaded
+function checkEmailJS() {
+    if (typeof emailjs === 'undefined') {
+        console.error('EmailJS is not loaded!');
+        return false;
+    }
+    return true;
+}
+
 contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     
+    // Check if EmailJS is loaded
+    if (!checkEmailJS()) {
+        alert('Error: EmailJS is not loaded. Please check your internet connection.');
+        return;
+    }
+    
     // Get form data
     const formData = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        message: document.getElementById('message').value
+        name: document.getElementById('name').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        message: document.getElementById('message').value.trim()
     };
+    
+    // Validate form data
+    if (!formData.name || !formData.email || !formData.message) {
+        alert('Please fill in all required fields.');
+        return;
+    }
+    
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+        alert('Please enter a valid email address.');
+        return;
+    }
     
     const submitButton = contactForm.querySelector('button[type="submit"]');
     const originalButtonText = submitButton.textContent;
@@ -95,13 +121,31 @@ contactForm.addEventListener('submit', async (e) => {
         submitButton.textContent = 'Sending...';
         submitButton.disabled = true;
         
-        // Send email using EmailJS
-        await emailjs.send('service_57uuv1o', 'template_471132s', {
-            from_name: formData.name,
-            from_email: formData.email,
-            message: formData.message,
-            to_email: 'setyusuf236@gmail.com'
+        console.log('Sending email with data:', {
+            service_id: 'service_57uuv1o',
+            template_id: 'template_471132s',
+            user_id: 'gmMxuH5UTdYeQouzf',
+            template_params: {
+                from_name: formData.name,
+                from_email: formData.email,
+                message: formData.message,
+                to_email: 'setyusuf236@gmail.com'
+            }
         });
+        
+        // Send email using EmailJS
+        const response = await emailjs.send(
+            'service_57uuv1o', 
+            'template_471132s', 
+            {
+                from_name: formData.name,
+                from_email: formData.email,
+                message: formData.message,
+                to_email: 'setyusuf236@gmail.com'
+            }
+        );
+        
+        console.log('Email sent successfully!', response);
         
         // Success message
         alert('Thank you for your message! We will get back to you soon at setyusuf236@gmail.com');
@@ -110,13 +154,35 @@ contactForm.addEventListener('submit', async (e) => {
         contactForm.reset();
         
     } catch (error) {
-        console.error('Error sending email:', error);
-        alert('Sorry, there was an error sending your message. Please try again or email us directly at setyusuf236@gmail.com');
+        console.error('Error details:', {
+            name: error.name,
+            message: error.message,
+            status: error.status,
+            text: error.text,
+            stack: error.stack
+        });
+        
+        let errorMessage = 'Sorry, there was an error sending your message. ';
+        errorMessage += 'Please try again or email us directly at setyusuf236@gmail.com';
+        
+        if (error.status === 0) {
+            errorMessage = 'Network error. Please check your internet connection.';
+        } else if (error.status === 400) {
+            errorMessage = 'Invalid request. Please check your form data.';
+        } else if (error.status === 401) {
+            errorMessage = 'Authentication failed. Please check your EmailJS configuration.';
+        }
+        
+        alert(errorMessage);
     } finally {
         submitButton.textContent = originalButtonText;
         submitButton.disabled = false;
     }
 });
+
+// Log when the script loads
+console.log('Contact form script loaded');
+console.log('EmailJS is defined:', typeof emailjs !== 'undefined');
 
 // Newsletter Form Submission
 const newsletterForm = document.querySelector('.newsletter-form');
