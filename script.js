@@ -96,7 +96,7 @@ contactForm.addEventListener('submit', async (e) => {
         submitButton.disabled = true;
         
         // Send email using EmailJS
-        await emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
+        await emailjs.send('service_57uuv1o', 'template_471132s', {
             from_name: formData.name,
             from_email: formData.email,
             message: formData.message,
